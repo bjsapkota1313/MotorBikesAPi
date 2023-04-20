@@ -1,0 +1,548 @@
+{
+	"info": {
+		"_postman_id": "0105009c-eabf-4a82-ad22-0eea27ca79a4",
+		"name": "Motor Bikes API JAVA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26932090"
+	},
+	"item": [
+		{
+			"name": "GEt ALl Bikes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/v1/motorbikes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motorbikes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GEt ALl Bikes",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/v1/motorbikes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"motorbikes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Apr 2023 15:26:14 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"brand\": \"Honda\",\n        \"model\": \"CBR1000RR\",\n        \"engine\": \"1000cc\",\n        \"color\": \"Red\",\n        \"price\": 15000\n    },\n    {\n        \"id\": 2,\n        \"brand\": \"Yamaha\",\n        \"model\": \"R1\",\n        \"engine\": \"1000cc\",\n        \"color\": \"Blue\",\n        \"price\": 16000\n    },\n    {\n        \"id\": 3,\n        \"brand\": \"Suzuki\",\n        \"model\": \"GSX-R1000\",\n        \"engine\": \"1000cc\",\n        \"color\": \"Black\",\n        \"price\": 14000\n    },\n    {\n        \"id\": 4,\n        \"brand\": \"Kawasaki\",\n        \"model\": \"Ninja ZX-10R\",\n        \"engine\": \"1000cc\",\n        \"color\": \"Green\",\n        \"price\": 13000\n    },\n    {\n        \"id\": 5,\n        \"brand\": \"Ducati\",\n        \"model\": \"Panigale V4\",\n        \"engine\": \"1000cc\",\n        \"color\": \"White\",\n        \"price\": 17000\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "GEt One Bike",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/v1/motorbikes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"motorbikes",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GEt One Bike",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/v1/motorbikes/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"motorbikes",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Apr 2023 16:00:17 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 2,\n    \"brand\": \"Yamaha\",\n    \"model\": \"R1\",\n    \"engine\": \"1000cc\",\n    \"color\": \"Blue\",\n    \"price\": 16000\n}"
+				}
+			]
+		},
+		{
+			"name": "PoST A MotorBike ( 409) ALready Exist",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 7,\r\n    \"brand\": \"KTM\",\r\n    \"model\": \"Duke\",\r\n    \"engine\": \"800cc\",\r\n    \"color\": \"Orange\",\r\n    \"price\": 4000\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/motorbikes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"motorbikes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PoST A MotorBike Already Exist",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 7,\r\n    \"brand\": \"KTM\",\r\n    \"model\": \"Duke\",\r\n    \"engine\": \"800cc\",\r\n    \"color\": \"Orange\",\r\n    \"price\": 4000\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/motorbikes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"motorbikes"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "19"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Apr 2023 16:37:04 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "Bike already exists"
+				}
+			]
+		},
+		{
+			"name": "POST NEw BIke (200)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 7,\r\n    \"brand\": \"KTM\",\r\n    \"model\": \"Duke\",\r\n    \"engine\": \"800cc\",\r\n    \"color\": \"Orange\",\r\n    \"price\": 4000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/motorbikes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"motorbikes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "POST NEw BIke (200)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 7,\r\n    \"brand\": \"KTM\",\r\n    \"model\": \"Duke\",\r\n    \"engine\": \"800cc\",\r\n    \"color\": \"Orange\",\r\n    \"price\": 4000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/motorbikes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"motorbikes"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Apr 2023 17:16:06 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 7,\n    \"brand\": \"KTM\",\n    \"model\": \"Duke\",\n    \"engine\": \"800cc\",\n    \"color\": \"Orange\",\n    \"price\": 4000\n}"
+				}
+			]
+		},
+		{
+			"name": "Udate MotorBike",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 7,\r\n    \"brand\": \"KTM\",\r\n    \"model\": \"Duke\",\r\n    \"engine\": \"800cc\",\r\n    \"color\": \"Red\",\r\n    \"price\": 4000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/motorbikes/7",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"motorbikes",
+						"7"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Udate MotorBike",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 7,\r\n    \"brand\": \"KTM\",\r\n    \"model\": \"Duke\",\r\n    \"engine\": \"800cc\",\r\n    \"color\": \"Red\",\r\n    \"price\": 4000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/motorbikes/7",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"motorbikes",
+								"7"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Apr 2023 17:21:29 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 7,\n    \"brand\": \"KTM\",\n    \"model\": \"Duke\",\n    \"engine\": \"800cc\",\n    \"color\": \"Red\",\n    \"price\": 4000\n}"
+				}
+			]
+		},
+		{
+			"name": "update MotorBike (204)",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 7,\r\n    \"brand\": \"KTM\",\r\n    \"model\": \"Duke\",\r\n    \"engine\": \"800cc\",\r\n    \"color\": \"Red\",\r\n    \"price\": 50000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/motorbikes/7",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"motorbikes",
+						"7"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "update MotorBike (204)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 7,\r\n    \"brand\": \"KTM\",\r\n    \"model\": \"Duke\",\r\n    \"engine\": \"800cc\",\r\n    \"color\": \"Red\",\r\n    \"price\": 50000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/motorbikes/7",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"motorbikes",
+								"7"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Apr 2023 17:28:19 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 7,\n    \"brand\": \"KTM\",\n    \"model\": \"Duke\",\n    \"engine\": \"800cc\",\n    \"color\": \"Red\",\n    \"price\": 50000\n}"
+				}
+			]
+		},
+		{
+			"name": "DELETE MotorBike",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/motorbikes/7",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"motorbikes",
+						"7"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "DELETE MotorBike",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/motorbikes/7",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"motorbikes",
+								"7"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 20 Apr 2023 17:33:36 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost/api/v1",
+			"type": "string"
+		}
+	]
+}
