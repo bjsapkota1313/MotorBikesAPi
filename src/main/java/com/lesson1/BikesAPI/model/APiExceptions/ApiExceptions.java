@@ -4,9 +4,9 @@ import lombok.Getter;
 
 @Getter
 public abstract class ApiExceptions  extends  RuntimeException{
-    private int statusCode;
+    private final int  statusCode;
 
-    public ApiExceptions(int statusCode, String message) {
+    protected ApiExceptions(int statusCode, String message) {
         super(message);
         this.statusCode = statusCode;
     }
