@@ -11,7 +11,7 @@ import java.util.Objects;
 @NoArgsConstructor
 public class MotorBike {
 
-    private int id;
+    private long id;
     private String brand;
     private String model;
     private String engine;

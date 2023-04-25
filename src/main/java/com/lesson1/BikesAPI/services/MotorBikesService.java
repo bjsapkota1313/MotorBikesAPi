@@ -19,7 +19,7 @@ public class MotorBikesService {
         return bikes;
     }
 
-    public MotorBike getBikeById(int id) {
+    public MotorBike getBikeById(long id) {
         return bikes.stream().filter(bike -> bike.getId() == id)
                 .findFirst().
                 orElse(null);
@@ -33,7 +33,7 @@ public class MotorBikesService {
         return getBikeById(bike.getId());
     }
 
-    public MotorBike updateBike(MotorBike bike, int id)  {
+    public MotorBike updateBike(MotorBike bike, long id)  {
         MotorBike bikeToUpdate = getBikeById(id);
         if (bikeToUpdate == null) {
             throw new NotFoundException("The bike you are trying to update does not exist");
@@ -45,7 +45,7 @@ public class MotorBikesService {
         bikeToUpdate.setPrice(bike.getPrice());
         return bikeToUpdate;
     }
-    public void deleteBike(int id) {
+    public void deleteBike(long id) {
         MotorBike bikeToDelete = getBikeById(id);
         if (bikeToDelete == null) {
             throw new NotFoundException("The bike with the id " + id + " which you are trying to Delete does not exist");
