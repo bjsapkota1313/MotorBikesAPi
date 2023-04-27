@@ -24,10 +24,10 @@ public class BikesApiApplication {
 	public List<MotorBike> bikes(){
 		return new ArrayList<>(List.of(
 				new MotorBike(1,"Honda", "CBR1000RR", "1000cc", "Red", 15000),
-				new MotorBike(2,"Yamaha", "R1", "1000cc", "Blue", 16000),
-				new MotorBike(3,"Suzuki", "GSX-R1000", "1000cc", "Black", 14000),
-				new MotorBike(4,"Kawasaki", "Ninja ZX-10R", "1000cc", "Green", 13000),
-				new MotorBike(5,"Ducati", "Panigale V4", "1000cc", "White", 17000)
+				new MotorBike(2,"Yamaha", "R1", "1200cc", "Blue", 16000),
+				new MotorBike(3,"Suzuki", "GSX-R1000", "1300cc", "Black", 14000),
+				new MotorBike(4,"Kawasaki", "Ninja ZX-10R", "1500cc", "Green", 13000),
+				new MotorBike(5,"Ducati", "Panigale V4", "1400cc", "White", 17000)
 		));
 	}
 

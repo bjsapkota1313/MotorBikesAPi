@@ -20,10 +20,9 @@ public class MotorBike {
     @Override
     public boolean equals(Object o) {
         if (o == this) return true;
-        if (!(o instanceof MotorBike)) {
+        if (!(o instanceof MotorBike motorBike)) {
             return false;
         }
-        MotorBike motorBike = (MotorBike) o;
         return Objects.equals(brand, motorBike.brand) && Objects.equals(model, motorBike.model)
                 && Objects.equals(engine, motorBike.engine) && Objects.equals(color, motorBike.color) && price == motorBike.price;
     }
