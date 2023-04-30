@@ -1,4 +1,4 @@
-package com.lesson1.BikesAPI;
+package com.lesson1.BikesAPI.Configuration;
 
 
 import com.lesson1.BikesAPI.model.APiExceptions.ApiExceptions;

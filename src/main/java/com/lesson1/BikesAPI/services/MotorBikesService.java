@@ -4,33 +4,31 @@ import com.lesson1.BikesAPI.model.APiExceptions.ConflictException;
 import com.lesson1.BikesAPI.model.APiExceptions.NotFoundException;
 import com.lesson1.BikesAPI.model.MotorBike;
 import org.springframework.stereotype.Service;
+import repository.MotorBikesRepository;
 
 import java.util.List;
 
 @Service
 public class MotorBikesService {
-    private List<MotorBike> bikes;
+    private MotorBikesRepository motorBikesRepository;
 
-    public MotorBikesService(List<MotorBike> bikes) {
-        this.bikes = bikes;
+    public MotorBikesService(MotorBikesRepository motorBikesRepository) {
+        this.motorBikesRepository = motorBikesRepository;
     }
 
     public List<MotorBike> getAllBikes() {
-        return bikes;
+        return (List<MotorBike>) motorBikesRepository.findAll();
     }
 
     public MotorBike getBikeById(long id) {
-        return bikes.stream().filter(bike -> bike.getId() == id)
-                .findFirst().
-                orElse(null);
+        return motorBikesRepository.findById(id).orElseThrow(() -> new NotFoundException("The bike with the id " + id + " does not exist"));
     }
 
     public MotorBike addBike(MotorBike bike) throws ConflictException {
-        if (bikes.contains(bike)) {
-            throw new ConflictException("Bike already exists");
+        if (motorBikesRepository.existsById(bike.getId())) {
+            throw new ConflictException("The bike with the id " + bike.getId() + " already exists");
         }
-        bikes.add(bike);
-        return getBikeById(bike.getId());
+        return motorBikesRepository.save(bike);
     }
 
     public MotorBike updateBike(MotorBike bike, long id)  {
@@ -46,11 +44,7 @@ public class MotorBikesService {
         return bikeToUpdate;
     }
     public void deleteBike(long id) {
-        MotorBike bikeToDelete = getBikeById(id);
-        if (bikeToDelete == null) {
-            throw new NotFoundException("The bike with the id " + id + " which you are trying to Delete does not exist");
-        }
-        bikes.remove(bikeToDelete);
+        motorBikesRepository.deleteById(id);
     }
 
 }
