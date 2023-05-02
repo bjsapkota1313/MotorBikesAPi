@@ -1,4 +1,5 @@
-package repository;
+package com.lesson1.BikesAPI.repository;
+
 
 import com.lesson1.BikesAPI.model.MotorBike;
 import org.springframework.data.repository.CrudRepository;

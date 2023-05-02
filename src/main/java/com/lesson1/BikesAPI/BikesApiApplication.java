@@ -20,16 +20,4 @@ public class BikesApiApplication {
 			System.out.println(e.getStackTrace());
 		}
     }
-
-	@Bean
-	public List<MotorBike> bikes(){
-		return new ArrayList<>(List.of(
-				new MotorBike("Honda", "CBR1000RR", "1000cc", "Red", 15000),
-				new MotorBike("Yamaha", "R1", "1200cc", "Blue", 16000),
-				new MotorBike("Suzuki", "GSX-R1000", "1300cc", "Black", 14000),
-				new MotorBike("Kawasaki", "Ninja ZX-10R", "1500cc", "Green", 13000),
-				new MotorBike("Ducati", "Panigale V4", "1400cc", "White", 17000)
-		));
-	}
-
 }

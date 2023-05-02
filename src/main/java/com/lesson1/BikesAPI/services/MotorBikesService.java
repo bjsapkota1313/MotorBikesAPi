@@ -4,7 +4,7 @@ import com.lesson1.BikesAPI.model.APiExceptions.ConflictException;
 import com.lesson1.BikesAPI.model.APiExceptions.NotFoundException;
 import com.lesson1.BikesAPI.model.MotorBike;
 import org.springframework.stereotype.Service;
-import repository.MotorBikesRepository;
+import com.lesson1.BikesAPI.repository.MotorBikesRepository;
 
 import java.util.List;
 
@@ -44,6 +44,9 @@ public class MotorBikesService {
         return bikeToUpdate;
     }
     public void deleteBike(long id) {
+        if(!motorBikesRepository.existsById(id)){
+            throw new NotFoundException("The bike with the id " + id + " does not exist");
+        }
         motorBikesRepository.deleteById(id);
     }
 

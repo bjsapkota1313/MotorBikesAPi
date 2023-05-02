@@ -1,8 +1,6 @@
 package com.lesson1.BikesAPI.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,11 +17,12 @@ public class MotorBike {
     private long id;
     private String brand;
     private String model;
-    private String engine;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private Engine engine;
     private String color;
     private double price;
 
-    public MotorBike(String brand, String model, String engine, String color, double price) {
+    public MotorBike(String brand, String model, Engine engine, String color, double price) {
         this.brand = brand;
         this.model = model;
         this.engine = engine;
