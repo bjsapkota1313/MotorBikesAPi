@@ -1,10 +1,13 @@
 package com.lesson1.BikesAPI.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -21,6 +24,8 @@ public class MotorBike {
     private Engine engine;
     private String color;
     private double price;
+    @OneToMany(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+    private List<Wheel> wheels= new ArrayList<>();
 
     public MotorBike(String brand, String model, Engine engine, String color, double price) {
         this.brand = brand;
