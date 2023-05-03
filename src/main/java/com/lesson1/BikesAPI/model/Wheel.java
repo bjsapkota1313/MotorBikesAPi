@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-
 public class Wheel {
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
@@ -17,7 +16,6 @@ public class Wheel {
     private String brand;
     private String model;
     private double size;
-
     public Wheel(String brand, String model, double size) {
         this.brand = brand;
         this.model = model;
