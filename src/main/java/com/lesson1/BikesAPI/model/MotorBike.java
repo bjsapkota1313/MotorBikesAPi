@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
@@ -24,6 +22,9 @@ public class MotorBike {
     private double price;
     @OneToMany(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
     private List<Wheel> wheels= new ArrayList<>();
+
+   @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
+    private List<Part> parts = new ArrayList<>();
 
     public MotorBike(String brand, String model, Engine engine, String color, double price) {
         this.brand = brand;

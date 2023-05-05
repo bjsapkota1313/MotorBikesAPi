@@ -2,8 +2,10 @@ package com.lesson1.BikesAPI.Configuration;
 
 import com.lesson1.BikesAPI.model.Engine;
 import com.lesson1.BikesAPI.model.MotorBike;
+import com.lesson1.BikesAPI.model.Part;
 import com.lesson1.BikesAPI.model.Wheel;
 import com.lesson1.BikesAPI.repository.MotorBikesRepository;
+import com.lesson1.BikesAPI.services.PartService;
 import com.lesson1.BikesAPI.services.WheelService;
 import jakarta.transaction.Transactional;
 import org.springframework.boot.ApplicationArguments;
@@ -17,16 +19,19 @@ import java.util.List;
 public class ApplicationConfiguration implements ApplicationRunner {
     private final MotorBikesRepository motorBikesRepository;
     private final WheelService wheelService;
+    private final PartService partService;
 
 
-    public ApplicationConfiguration(MotorBikesRepository motorBikesRepository, WheelService wheelService) {
+    public ApplicationConfiguration(MotorBikesRepository motorBikesRepository, WheelService wheelService, PartService partService) {
         this.motorBikesRepository = motorBikesRepository;
         this.wheelService = wheelService;
+        this.partService = partService;
     }
 
     @Override
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
+
         wheelService.SaveAllWheels(new ArrayList<>(List.of(
                 new Wheel("Michelin", "Pilot Road 4", 120),
                 new Wheel("Bridgestone", "Battlax S22", 110),
@@ -41,6 +46,13 @@ public class ApplicationConfiguration implements ApplicationRunner {
                 wheelService.getWheelById(3L),
                 wheelService.getWheelById(4L)
         ));
+        partService.saveAllParts(new ArrayList<>(List.of(
+                new Part("Brake", "Brembo", "Brembo 19RCS Corsa Corta", 500),
+                new Part("Frame", "Aluminum Alloy", "Sportbike", 2500),
+                new Part("Exhaust", "Akrapovic", "Racing Line", 1500),
+                new Part("Suspension", "Öhlins", "STX 46", 1000)
+
+        )));
 //        List<Wheel> bike3Wheels = new ArrayList<>(List.of(
 //                wheelService.getWheelById(1L),
 //                wheelService.getWheelById(3L)
@@ -61,10 +73,22 @@ public class ApplicationConfiguration implements ApplicationRunner {
 
         motorBikesRepository.findById(1L).ifPresent(bike -> {
             bike.setWheels(bike1Wheels);
+            bike.setParts(new ArrayList<>(List.of(
+                    partService.getPartById(1L),
+                    partService.getPartById(2L),
+                    partService.getPartById(3L),
+                    partService.getPartById(4L)
+            )));
             motorBikesRepository.save(bike);
         });
         motorBikesRepository.findById(2L).ifPresent(bike -> {
             bike.setWheels(bike2Wheels);
+            bike.setParts(new ArrayList<>(List.of(
+                    partService.getPartById(1L),
+                    partService.getPartById(2L),
+                    partService.getPartById(3L),
+                    partService.getPartById(4L)
+            )));
             motorBikesRepository.save(bike);
         });
 //        motorBikesRepository.findById(3L).ifPresent(bike -> {

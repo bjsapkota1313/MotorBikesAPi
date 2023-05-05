@@ -1,7 +1,7 @@
 package com.lesson1.BikesAPI.Controllers;
 
-import com.lesson1.BikesAPI.model.APiExceptions.BadRequestException;
-import com.lesson1.BikesAPI.model.APiExceptions.NotFoundException;
+import com.lesson1.BikesAPI.model.APIExceptions.BadRequestException;
+import com.lesson1.BikesAPI.model.APIExceptions.NotFoundException;
 import com.lesson1.BikesAPI.model.MotorBike;
 import com.lesson1.BikesAPI.services.MotorBikesService;
 import org.springframework.http.MediaType;

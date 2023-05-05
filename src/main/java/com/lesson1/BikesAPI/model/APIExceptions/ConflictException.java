@@ -1,4 +1,4 @@
-package com.lesson1.BikesAPI.model.APiExceptions;
+package com.lesson1.BikesAPI.model.APIExceptions;
 
 public class ConflictException extends ApiExceptions {
     public ConflictException(String body) {

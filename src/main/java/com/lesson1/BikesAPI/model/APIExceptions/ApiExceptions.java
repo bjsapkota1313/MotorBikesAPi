@@ -1,4 +1,4 @@
-package com.lesson1.BikesAPI.model.APiExceptions;
+package com.lesson1.BikesAPI.model.APIExceptions;
 
 import lombok.Getter;
 

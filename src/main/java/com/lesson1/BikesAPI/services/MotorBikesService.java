@@ -1,7 +1,7 @@
 package com.lesson1.BikesAPI.services;
 
-import com.lesson1.BikesAPI.model.APiExceptions.ConflictException;
-import com.lesson1.BikesAPI.model.APiExceptions.NotFoundException;
+import com.lesson1.BikesAPI.model.APIExceptions.ConflictException;
+import com.lesson1.BikesAPI.model.APIExceptions.NotFoundException;
 import com.lesson1.BikesAPI.model.MotorBike;
 import org.springframework.stereotype.Service;
 import com.lesson1.BikesAPI.repository.MotorBikesRepository;
