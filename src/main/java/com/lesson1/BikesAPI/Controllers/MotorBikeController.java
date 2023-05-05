@@ -2,6 +2,7 @@ package com.lesson1.BikesAPI.Controllers;
 
 import com.lesson1.BikesAPI.model.APIExceptions.BadRequestException;
 import com.lesson1.BikesAPI.model.APIExceptions.NotFoundException;
+import com.lesson1.BikesAPI.model.DTO.MotorBikeDTO;
 import com.lesson1.BikesAPI.model.MotorBike;
 import com.lesson1.BikesAPI.services.MotorBikesService;
 import org.springframework.http.MediaType;
@@ -33,7 +34,7 @@ public class MotorBikeController {
     }
 
     @PostMapping
-    public ResponseEntity addBike(@RequestBody MotorBike bike) {
+    public ResponseEntity addBike(@RequestBody MotorBikeDTO bike) {
         MotorBike newBike = motorBikesService.addBike(bike);
         return ResponseEntity.status(201).body(newBike);
     }

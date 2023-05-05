@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MotorBikesRepository extends CrudRepository<MotorBike, Long> {
 
+    boolean existsByBrandAndModel(String brand, String model);
 }

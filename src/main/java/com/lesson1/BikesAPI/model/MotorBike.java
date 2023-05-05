@@ -1,5 +1,6 @@
 package com.lesson1.BikesAPI.model;
 
+import com.lesson1.BikesAPI.model.DTO.EngineDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,10 +21,11 @@ public class MotorBike {
     private Engine engine;
     private String color;
     private double price;
-    @OneToMany(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER )
     private List<Wheel> wheels= new ArrayList<>();
 
-   @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
+
+   @ManyToMany(fetch = FetchType.EAGER)
     private List<Part> parts = new ArrayList<>();
 
     public MotorBike(String brand, String model, Engine engine, String color, double price) {
@@ -33,7 +35,6 @@ public class MotorBike {
         this.color = color;
         this.price = price;
     }
-
     @Override
     public boolean equals(Object o) {
         if (o == this) return true;
