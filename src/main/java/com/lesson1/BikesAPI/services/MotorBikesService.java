@@ -5,9 +5,9 @@ import com.lesson1.BikesAPI.model.APIExceptions.NotFoundException;
 import com.lesson1.BikesAPI.model.DTO.MotorBikeDTO;
 import com.lesson1.BikesAPI.model.Engine;
 import com.lesson1.BikesAPI.model.MotorBike;
+import com.lesson1.BikesAPI.repository.MotorBikesRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import com.lesson1.BikesAPI.repository.MotorBikesRepository;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -30,14 +30,14 @@ public class MotorBikesService {
     }
 
     public MotorBike addBike(MotorBikeDTO bike) throws ConflictException {
-        if(motorBikesRepository.existsByBrandAndModel(bike.brand(), bike.model())) {
+        if (motorBikesRepository.existsByBrandAndModel(bike.brand(), bike.model())) {
             throw new ConflictException("The bike with the brand " + bike.brand() + " and model " + bike.model() + " already exists");
         }
         return motorBikesRepository.save(new MotorBike(bike.brand(), bike.model(),
-                new Engine(bike.engine().type(),bike.engine().volume()), bike.color(), bike.price()));
+                new Engine(bike.engine().type(), bike.engine().volume()), bike.color(), bike.price()));
     }
 
-    public MotorBike updateBike(MotorBike bike, long id)  {
+    public MotorBike updateBike(MotorBike bike, long id) {
         MotorBike bikeToUpdate = getBikeById(id);
         if (bikeToUpdate == null) {
             throw new NotFoundException("The bike you are trying to update does not exist");
@@ -49,9 +49,10 @@ public class MotorBikesService {
         bikeToUpdate.setPrice(bike.getPrice());
         return bikeToUpdate;
     }
+
     public void deleteBike(long id) {
-        if(!motorBikesRepository.existsById(id)){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"The bike with the id " + id + " does not exist");
+        if (!motorBikesRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The bike with the id " + id + " does not exist");
         }
         motorBikesRepository.deleteById(id);
     }

@@ -16,6 +16,7 @@ public class Wheel {
     private String brand;
     private String model;
     private double size;
+
     public Wheel(String brand, String model, double size) {
         this.brand = brand;
         this.model = model;

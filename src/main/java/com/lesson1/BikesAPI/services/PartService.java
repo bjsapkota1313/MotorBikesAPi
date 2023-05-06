@@ -6,6 +6,7 @@ import com.lesson1.BikesAPI.repository.PartRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class PartService {
     private final PartRepository partRepository;
@@ -13,14 +14,17 @@ public class PartService {
     public PartService(PartRepository partRepository) {
         this.partRepository = partRepository;
     }
-    public void saveAllParts(List<Part> parts){
+
+    public void saveAllParts(List<Part> parts) {
         partRepository.saveAll(parts);
     }
-    public Part getPartById(Long id){
+
+    public Part getPartById(Long id) {
         return partRepository.findById(id).orElseThrow(
-                ()->new NotFoundException("The part with the id " + id + " does not exist"));
+                () -> new NotFoundException("The part with the id " + id + " does not exist"));
     }
-    public void deletePartById(Long id){
+
+    public void deletePartById(Long id) {
         partRepository.deleteById(id);
     }
 }

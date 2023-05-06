@@ -1,12 +1,8 @@
 package com.lesson1.BikesAPI.Configuration;
 
-import com.lesson1.BikesAPI.model.Engine;
-import com.lesson1.BikesAPI.model.MotorBike;
-import com.lesson1.BikesAPI.model.Part;
-import com.lesson1.BikesAPI.model.Wheel;
+import com.lesson1.BikesAPI.model.*;
 import com.lesson1.BikesAPI.repository.MotorBikesRepository;
-import com.lesson1.BikesAPI.services.PartService;
-import com.lesson1.BikesAPI.services.WheelService;
+import com.lesson1.BikesAPI.services.*;
 import jakarta.transaction.Transactional;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -20,12 +16,14 @@ public class ApplicationConfiguration implements ApplicationRunner {
     private final MotorBikesRepository motorBikesRepository;
     private final WheelService wheelService;
     private final PartService partService;
+    private final EngineService engineService;
 
 
-    public ApplicationConfiguration(MotorBikesRepository motorBikesRepository, WheelService wheelService, PartService partService) {
+    public ApplicationConfiguration(MotorBikesRepository motorBikesRepository, WheelService wheelService, PartService partService, EngineService engineService) {
         this.motorBikesRepository = motorBikesRepository;
         this.wheelService = wheelService;
         this.partService = partService;
+        this.engineService = engineService;
     }
 
     @Override
@@ -37,6 +35,13 @@ public class ApplicationConfiguration implements ApplicationRunner {
                 new Wheel("Bridgestone", "Battlax S22", 110),
                 new Wheel("Pirelli", "Diablo Rosso Corsa II", 250),
                 new Wheel("Metzeler", "Roadtec 01", 130)
+        )));
+        engineService.saveAllEngines(new ArrayList<>(List.of(
+                new Engine("v4", 1100),
+                new Engine("v2", 1200),
+                new Engine("v3", 1200),
+                new Engine("FIv3", 1000),
+                new Engine("v4.3", 1100)
         )));
         List<Wheel> bike1Wheels = new ArrayList<>(List.of(
                 wheelService.getWheelById(1L),
@@ -63,12 +68,12 @@ public class ApplicationConfiguration implements ApplicationRunner {
 //        ));
 
         motorBikesRepository.saveAll(new ArrayList<MotorBike>(List.of(
-                new MotorBike("Honda", "CBR1000RR", new Engine("v4", 1100), "Red", 15000),
-                new MotorBike("Yamaha", "YZF-R1", new Engine("v2", 1200), "Blue", 14000),
-                new MotorBike("Suzuki", "GSX-R1000", new Engine("v3", 1200), "Black", 13000),
-                new MotorBike("Kawasaki", "Ninja ZX-10R", new Engine("FIv3", 1200), "Green", 12000),
-                new MotorBike("Ducati", "Panigale V4", new Engine("v4.3", 1100), "Red", 15000),
-                new MotorBike("Aprilia", "RSV4", new Engine("v4.0", 1100), "Black", 15000)
+                new MotorBike("Honda", "CBR1000RR", engineService.getEngineById(1L), "Red", 15000),
+                new MotorBike("Yamaha", "YZF-R1", engineService.getEngineById(2L), "Blue", 14000),
+                new MotorBike("Suzuki", "GSX-R1000", engineService.getEngineById(3L), "Black", 13000),
+                new MotorBike("Kawasaki", "Ninja ZX-10R", engineService.getEngineById(4L), "Green", 12000),
+                new MotorBike("Ducati", "Panigale V4", engineService.getEngineById(1L), "Red", 15000),
+                new MotorBike("Aprilia", "RSV4", engineService.getEngineById(2L), "Black", 15000)
         )));
 
         motorBikesRepository.findById(1L).ifPresent(bike -> {

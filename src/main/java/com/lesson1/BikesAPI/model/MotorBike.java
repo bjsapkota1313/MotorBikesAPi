@@ -1,11 +1,12 @@
 package com.lesson1.BikesAPI.model;
 
-import com.lesson1.BikesAPI.model.DTO.EngineDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -21,11 +22,11 @@ public class MotorBike {
     private Engine engine;
     private String color;
     private double price;
-    @OneToMany(fetch = FetchType.EAGER )
-    private List<Wheel> wheels= new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Wheel> wheels = new ArrayList<>();
 
 
-   @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Part> parts = new ArrayList<>();
 
     public MotorBike(String brand, String model, Engine engine, String color, double price) {
@@ -35,13 +36,14 @@ public class MotorBike {
         this.color = color;
         this.price = price;
     }
+
     @Override
     public boolean equals(Object o) {
         if (o == this) return true;
         if (!(o instanceof MotorBike motorBike)) {
             return false;
         }
-        return Objects.equals(id,motorBike.id) && Objects.equals(brand, motorBike.brand) && Objects.equals(model, motorBike.model)
+        return Objects.equals(id, motorBike.id) && Objects.equals(brand, motorBike.brand) && Objects.equals(model, motorBike.model)
                 && Objects.equals(engine, motorBike.engine) && Objects.equals(color, motorBike.color) && price == motorBike.price;
     }
 
