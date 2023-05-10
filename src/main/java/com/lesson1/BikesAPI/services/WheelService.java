@@ -20,7 +20,8 @@ public class WheelService {
                 () -> new NotFoundException("The wheel with the id " + id + " does not exist"));
     }
 
-    public List<Wheel> SaveAllWheels(List<Wheel> wheels) {
-        return (List<Wheel>) wheelRepository.saveAll(wheels);
+    public void saveAllWheels(List<Wheel> wheels)
+    {
+        wheelRepository.saveAll(wheels);
     }
 }

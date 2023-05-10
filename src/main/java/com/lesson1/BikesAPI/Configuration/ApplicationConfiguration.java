@@ -32,7 +32,7 @@ public class ApplicationConfiguration implements ApplicationRunner {
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
 
-        wheelService.SaveAllWheels(new ArrayList<>(List.of(
+        wheelService.saveAllWheels(new ArrayList<>(List.of(
                 new Wheel("Michelin", "Pilot Road 4", 120),
                 new Wheel("Bridgestone", "Battlax S22", 110),
                 new Wheel("Pirelli", "Diablo Rosso Corsa II", 250),
