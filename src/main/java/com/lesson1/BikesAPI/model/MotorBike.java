@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
@@ -23,7 +21,7 @@ public class MotorBike {
     private String color;
     private double price;
     @OneToMany(fetch = FetchType.EAGER)
-    private List<Wheel> wheels = new ArrayList<>();
+    private Set<Wheel> wheels = new HashSet<>();
 
 
     @ManyToMany(fetch = FetchType.EAGER)

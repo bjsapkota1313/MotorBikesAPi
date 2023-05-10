@@ -9,7 +9,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Component
 public class ApplicationConfiguration implements ApplicationRunner {
@@ -43,11 +45,11 @@ public class ApplicationConfiguration implements ApplicationRunner {
                 new Engine("FIv3", 1000),
                 new Engine("v4.3", 1100)
         )));
-        List<Wheel> bike1Wheels = new ArrayList<>(List.of(
+        Set<Wheel> bike1Wheels = new HashSet<>(List.of(
                 wheelService.getWheelById(1L),
                 wheelService.getWheelById(2L)
         ));
-        List<Wheel> bike2Wheels = new ArrayList<>(List.of(
+        Set<Wheel> bike2Wheels = new HashSet<>(List.of(
                 wheelService.getWheelById(3L),
                 wheelService.getWheelById(4L)
         ));
