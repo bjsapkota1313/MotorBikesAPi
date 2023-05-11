@@ -1,4 +1,4 @@
-package com.lesson1.BikesAPI.Controllers;
+package com.lesson1.BikesAPI.controllers;
 
 import com.lesson1.BikesAPI.model.APIExceptions.BadRequestException;
 import com.lesson1.BikesAPI.model.APIExceptions.NotFoundException;
@@ -19,13 +19,13 @@ public class MotorBikeController {
     }
 
     @GetMapping
-    public ResponseEntity getAllBikes() {
+    public ResponseEntity<Object> getAllBikes() {
 
         return ResponseEntity.ok(motorBikesService.getAllBikes());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity getBikeById(@PathVariable int id) {
+    public ResponseEntity<Object> getBikeById(@PathVariable int id) {
         MotorBike bike = motorBikesService.getBikeById(id);
         if (bike == null) {
             throw new NotFoundException("The bike with the id " + id + " does not exist");
@@ -34,13 +34,13 @@ public class MotorBikeController {
     }
 
     @PostMapping
-    public ResponseEntity addBike(@RequestBody MotorBikeDTO bike) {
+    public ResponseEntity<Object> addBike(@RequestBody MotorBikeDTO bike) {
         MotorBike newBike = motorBikesService.addBike(bike);
         return ResponseEntity.status(201).body(newBike);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity updateBike(@PathVariable long id, @RequestBody MotorBike bike) {
+    public ResponseEntity<Object> updateBike(@PathVariable long id, @RequestBody MotorBike bike) {
         if (id == 0) {
             throw new BadRequestException("The id of the bike cannot be 0");
         }
@@ -51,13 +51,14 @@ public class MotorBikeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteBike(@PathVariable long id) {
+    public ResponseEntity<Object> deleteBike(@PathVariable long id) {
         if (id == 0) {
             throw new BadRequestException("The Whole Resource cannot be deleted  id must be provided");
         }
         motorBikesService.deleteBike(id);
         return ResponseEntity.status(204).build();
     }
+
 
 
 }

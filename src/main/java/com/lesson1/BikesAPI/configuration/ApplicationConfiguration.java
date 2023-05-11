@@ -1,4 +1,4 @@
-package com.lesson1.BikesAPI.Configuration;
+package com.lesson1.BikesAPI.configuration;
 
 import com.lesson1.BikesAPI.model.*;
 import com.lesson1.BikesAPI.repository.MotorBikesRepository;
