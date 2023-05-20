@@ -1,6 +1,7 @@
 package com.lesson1.BikesAPI.configuration;
 
 import com.lesson1.BikesAPI.model.*;
+import com.lesson1.BikesAPI.model.DTO.CreateUserDTO;
 import com.lesson1.BikesAPI.repository.MotorBikesRepository;
 import com.lesson1.BikesAPI.services.*;
 import jakarta.transaction.Transactional;
@@ -19,18 +20,21 @@ public class ApplicationConfiguration implements ApplicationRunner {
     private final WheelService wheelService;
     private final PartService partService;
     private final EngineService engineService;
+    private final MemberService memberService;
 
 
-    public ApplicationConfiguration(MotorBikesRepository motorBikesRepository, WheelService wheelService, PartService partService, EngineService engineService) {
+    public ApplicationConfiguration(MotorBikesRepository motorBikesRepository, WheelService wheelService, PartService partService, EngineService engineService, MemberService memberService) {
         this.motorBikesRepository = motorBikesRepository;
         this.wheelService = wheelService;
         this.partService = partService;
         this.engineService = engineService;
+        this.memberService = memberService;
     }
 
     @Override
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
+        memberService.addMember(new CreateUserDTO("bjSapkota1313", "password", Role.ROLE_ADMIN));
 
         wheelService.saveAllWheels(new ArrayList<>(List.of(
                 new Wheel("Michelin", "Pilot Road 4", 120),
@@ -60,14 +64,7 @@ public class ApplicationConfiguration implements ApplicationRunner {
                 new Part("Suspension", "Öhlins", "STX 46", 1000)
 
         )));
-//        List<Wheel> bike3Wheels = new ArrayList<>(List.of(
-//                wheelService.getWheelById(1L),
-//                wheelService.getWheelById(3L)
-//        ));
-//        List<Wheel> bike4Wheels = new ArrayList<>(List.of(
-//                wheelService.getWheelById(2L),
-//                wheelService.getWheelById(4L)
-//        ));
+
 
         motorBikesRepository.saveAll(new ArrayList<MotorBike>(List.of(
                 new MotorBike("Honda", "CBR1000RR", engineService.getEngineById(1L), "Red", 15000),
@@ -98,13 +95,6 @@ public class ApplicationConfiguration implements ApplicationRunner {
             )));
             motorBikesRepository.save(bike);
         });
-//        motorBikesRepository.findById(3L).ifPresent(bike -> {
-//            bike.setWheels(bike3Wheels);
-//            motorBikesRepository.save(bike);
-//        });
-//        motorBikesRepository.findById(4L).ifPresent(bike -> {
-//            bike.setWheels(bike4Wheels);
-//            motorBikesRepository.save(bike);
-//        });
+
     }
 }
